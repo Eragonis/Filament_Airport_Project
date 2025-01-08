@@ -10,7 +10,22 @@ class FlightCollisionDetector
     {
  
 
+        /*
         dd($passenger->flights);
         return "Collision!";
+        */
+        foreach ($passenger->flights as $flight) {
+            foreach ($passenger->flights as $flightControl) {
+                if ($flight == $flight) {
+                    return "skip";
+                }
+                if($flight != $flightControl) {
+                    return "skip";
+                }
+                if($flight == $flightControl) {
+                    return "COLLISION!!!";
+            }
     }
+}
+}
 }

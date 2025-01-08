@@ -20,6 +20,10 @@ class Flight extends Model
         'arrival_date',
         'ready',
     ];
+    public $dates = [
+        'departure_date',
+        'arrival_date',
+    ];
 
     public function airplane(): BelongsTo
     {
