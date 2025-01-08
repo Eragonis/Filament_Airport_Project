@@ -39,6 +39,7 @@ class FlightResource extends Resource
                 Tables\Columns\TextColumn::make('number'),
                 Tables\Columns\TextColumn::make('start.short_name'),
                 Tables\Columns\TextColumn::make('end.short_name'),
+                Tables\Columns\TextColumn::make('Status '),
             ])
             ->filters([
                 //
