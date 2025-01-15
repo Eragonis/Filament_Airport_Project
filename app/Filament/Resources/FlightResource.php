@@ -51,6 +51,22 @@ class FlightResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+
+            ->actions([
+                Action::make('changeStatus')
+                    ->label('Status ändern')
+                    ->action(function (Flight $flight) {
+                        // Logik, um den Status zu ändern
+                        try {
+                            $flight->changeStatus('boarding'); // Zum Beispiel zum Status 'boarding'
+                            alert()->success('Status erfolgreich geändert');
+                        } catch (\Exception $e) {
+                            alert()->error($e->getMessage());
+                        }
+                    })
+                    ->icon('heroicon-o-refresh')
+                    ->color('primary'),
             ]);
     }
 

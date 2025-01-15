@@ -24,3 +24,7 @@ while true; do sl -afl; sleep 0; done
 
 ## Composer Update -> erstellt auch vendor ordner
 composer update --ignore-platform-req=ext-zip
+
+## Eingeben
+1. php artisan migrate:fresh --seed 
+2. php artisan serve
