@@ -20,3 +20,7 @@ php artisan migrate:fresh --seed
 sudo apt install sl
 while true; do sl -afl; sleep 0; done
 ```
+
+
+## Composer Update -> erstellt auch vendor ordner
+composer update --ignore-platform-req=ext-zip
