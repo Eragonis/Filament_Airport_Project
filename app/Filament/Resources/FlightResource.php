@@ -6,6 +6,7 @@ use App\Filament\Resources\FlightResource\Pages;
 use App\Filament\Resources\FlightResource\RelationManagers;
 use App\Filament\Resources\FlightResource\RelationManagers\PassengersRelationManager;
 use App\Models\Flight;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class FlightResource extends Resource
 {
@@ -54,20 +56,21 @@ class FlightResource extends Resource
             ])
 
             ->actions([
-                Action::make('changeStatus')
+                Tables\Actions\EditAction::make(), // Standard "Bearbeiten" Aktion
+                Action::make('changeStatus')       // Deine benutzerdefinierte Aktion
                     ->label('Status ändern')
+                    ->icon('heroicon-o-refresh')
                     ->action(function (Flight $flight) {
-                        // Logik, um den Status zu ändern
                         try {
-                            $flight->changeStatus('boarding'); // Zum Beispiel zum Status 'boarding'
+                            // Beispiel: Wechsle den Status auf 'boarding'
+                            $flight->changeStatus('boarding');
                             alert()->success('Status erfolgreich geändert');
                         } catch (\Exception $e) {
                             alert()->error($e->getMessage());
                         }
                     })
-                    ->icon('heroicon-o-refresh')
                     ->color('primary'),
-            ]);
+                ]);
     }
 
     public static function getRelations(): array
